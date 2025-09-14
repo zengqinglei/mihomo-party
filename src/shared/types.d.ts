@@ -216,7 +216,8 @@ interface ISysProxyConfig {
 }
 
 interface IAppConfig {
-  core: 'mihomo' | 'mihomo-alpha' | 'mihomo-smart'
+  core: 'mihomo' | 'mihomo-alpha' | 'mihomo-smart' | 'mihomo-specific'
+  specificVersion?: string
   enableSmartCore: boolean
   enableSmartOverride: boolean
   smartCoreUseLightGBM: boolean
@@ -282,6 +283,7 @@ interface IAppConfig {
   delayTestConcurrency?: number
   delayTestUrl?: string
   delayTestTimeout?: number
+  subscriptionTimeout?: number
   encryptedPassword?: number[]
   controlDns?: boolean
   controlSniff?: boolean
@@ -354,12 +356,7 @@ interface IMihomoDNSConfig {
   'default-nameserver'?: string[]
   nameserver?: string[]
   fallback?: string[]
-  'fallback-filter'?: {
-    geoip?: boolean
-    'geoip-code'?: string
-    ipcidr?: string[]
-    domain?: string[]
-  }
+  'fallback-filter'?: { [key: string]: boolean | string | string[] }
   'proxy-server-nameserver'?: string[]
   'direct-nameserver'?: string[]
   'direct-nameserver-follow-policy'?: boolean
