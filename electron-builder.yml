@@ -29,6 +29,7 @@ win:
     - 7z
   artifactName: clash-party-windows-${version}-${arch}-portable.${ext}
 nsis:
+  include: build/windows/installer.nsh
   artifactName: clash-party-windows-${version}-${arch}-setup.${ext}
   uninstallDisplayName: ${productName}
   allowToChangeInstallationDirectory: true
